@@ -1,11 +1,29 @@
+:root {
+  --bg: #111014;
+  --panel: #18151d;
+  --text: #f5f1e8;
+  --muted: #cfc6d8;
+  --gold: #c9a348;
+  --gold-dark: #b8892d;
+  --purple: #4b345a;
+  --green-bg: rgba(50, 100, 50, 0.2);
+  --green-border: #5fa86a;
+  --green-text: #8de59c;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --shadow-gold: 0 0 20px rgba(201, 163, 72, 0.2);
+  --shadow-gallery: 0 0 25px rgba(201, 163, 72, 0.25);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #111014;
-  color: #f5f1e8;
+  background: var(--bg);
+  color: var(--text);
   font-family: Georgia, serif;
 }
 
@@ -22,7 +40,7 @@ body {
 }
 
 .est {
-  color: #b8892d;
+  color: var(--gold-dark);
   letter-spacing: 0.25em;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -30,7 +48,7 @@ body {
 
 h1 {
   margin: 1rem 0;
-  color: #c9a348;
+  color: var(--gold);
   font-size: clamp(3rem, 10vw, 7rem);
   line-height: 0.9;
   text-transform: uppercase;
@@ -51,212 +69,189 @@ h1 span {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.9rem 1.4rem;
-  background: #b8892d;
-  color: #111014;
+  background: var(--gold-dark);
+  color: var(--bg);
   text-decoration: none;
   font-weight: bold;
   border-radius: 999px;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  background: var(--gold);
+  box-shadow: var(--shadow-gold);
 }
 
 .section {
   max-width: 900px;
   margin: 0 auto;
   padding: 5rem 1.5rem;
-  border-top: 1px solid #4b345a;
+  border-top: 1px solid var(--purple);
+}
+
+.section h2,
+.price-card h3,
+.contact-card h3,
+.payment-notes h3 {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .section h2 {
-  color: #c9a348;
-  text-transform: uppercase;
   letter-spacing: 0.12em;
 }
 
-.gallery-grid {
+.gallery-grid,
+.pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
 
-.gallery-grid img {
-    width: 100%;
-    height: 350px;
-
-    object-fit: cover;
-
-    border: 1px solid #4b345a;
-    border-radius: 8px;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.gallery-grid img:hover {
-    transform: translateY(-6px);
-
-    border-color: #c9a348;
-
-    box-shadow:
-        0 0 25px rgba(201, 163, 72, 0.25);
-}
-
-.art-card {
-  aspect-ratio: 3 / 4;
-  display: grid;
-  place-items: center;
-  border: 1px solid #4b345a;
-  background: #18151d;
-  color: #c9a348;
-  font-size: 1rem;
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.25rem;
-    margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border: 1px solid var(--purple);
+  border-radius: var(--radius-sm);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-gallery);
+}
+
+.price-card,
+.contact-card,
+.payment-notes {
+  background: var(--panel);
+  border: 1px solid var(--purple);
+  border-radius: var(--radius-md);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.price-card:hover,
+.contact-card:hover,
+.payment-notes:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-gold);
 }
 
 .price-card {
-    padding: 1.5rem;
-    background: #18151d;
-    border: 1px solid #4b345a;
-    border-radius: 10px;
-    text-align: center;
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.price-card h3 {
-    margin-top: 0;
-    color: #c9a348;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.price-card {
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.price-card:hover {
-    transform: translateY(-4px);
-
-    border-color: #c9a348;
-
-    box-shadow:
-        0 0 20px rgba(201,163,72,0.20);
+.price-card h3,
+.contact-card h3,
+.payment-notes h3 {
+  margin-top: 0;
 }
 
 .price {
-    margin: 0.5rem 0;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #f5f1e8;
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text);
 }
 
 .note {
-    margin-bottom: 0;
-    color: #cfc6d8;
-    font-size: 0.95rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .wide-card {
-    grid-column: span 2;
+  grid-column: span 2;
 }
 
 .commission-list {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0 0;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
 }
 
 .commission-list li {
-    margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .contact-card {
-    max-width: 500px;
-    margin-top: 2rem;
-    padding: 2rem;
-
-    background: #18151d;
-    border: 1px solid #4b345a;
-    border-radius: 10px;
-
-    text-align: center;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+  max-width: 500px;
+  margin-top: 2rem;
+  padding: 2rem;
+  text-align: center;
 }
 
 .contact-card:hover {
-    transform: translateY(-4px);
-
-    border-color: #c9a348;
-
-    box-shadow:
-        0 0 20px rgba(201, 163, 72, 0.20),
-        0 0 40px rgba(75, 52, 90, 0.15);
-}
-
-.contact-card h3 {
-    margin-top: 0;
-    color: #c9a348;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  box-shadow:
+    var(--shadow-gold),
+    0 0 40px rgba(75, 52, 90, 0.15);
 }
 
 .discord-name {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #f5f1e8;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text);
 }
 
 .status-open {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    background: rgba(50, 100, 50, 0.2);
-    border: 1px solid #5fa86a;
-    border-radius: 999px;
-    color: #8de59c;
-    font-weight: bold;
-}
-
-footer {
-    margin-top: 4rem;
-    padding: 2rem;
-    text-align: center;
-    color: #999;
-    font-size: 0.9rem;
-    border-top: 1px solid #4b345a;
-    background: rgba(24, 21, 29, 0.5);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: 999px;
+  color: var(--green-text);
+  font-weight: bold;
 }
 
 .payment-notes {
-    margin-top: 2rem;
-    padding: 1.5rem;
-
-    background: #18151d;
-    border: 1px solid #4b345a;
-    border-radius: 10px;
+  margin-top: 2rem;
+  padding: 1.5rem;
 }
 
-.payment-notes h3 {
-    margin-top: 0;
-
-    color: #c9a348;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--purple);
+  background: rgba(24, 21, 29, 0.5);
 }
 
 @media (max-width: 600px) {
-    .wide-card {
-        grid-column: span 1;
-    }
+  .wide-card {
+    grid-column: span 1;
+  }
+
+  .gallery-grid img {
+    height: 300px;
+  }
+
+  .discord-name {
+    font-size: 1.5rem;
+  }
 }
