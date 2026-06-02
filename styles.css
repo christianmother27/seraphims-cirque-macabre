@@ -238,6 +238,23 @@ footer {
     background: rgba(24, 21, 29, 0.5);
 }
 
+.payment-notes {
+    margin-top: 2rem;
+    padding: 1.5rem;
+
+    background: #18151d;
+    border: 1px solid #4b345a;
+    border-radius: 10px;
+}
+
+.payment-notes h3 {
+    margin-top: 0;
+
+    color: #c9a348;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
 @media (max-width: 600px) {
     .wide-card {
         grid-column: span 1;
